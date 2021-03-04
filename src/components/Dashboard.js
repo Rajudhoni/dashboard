@@ -6,6 +6,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Payments from './Payments';
+import Products from './Products';
+import Customers from './Customers';
+import Marketing from './Marketing';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -63,13 +67,18 @@ const useStyles = makeStyles((theme) => ({
   customTabRoot: {
     color: "#262626",
     backgroundColor: "#EFEFEF",
- 
     height: "55px", 
+    
 },
 customTabIndicator: {
  
     border: "2px solid #FCB03A",
     
+},
+tabs: {
+  fontSize: "20px",
+  fontWeight: 400, 
+  textTransform: "capitalize"
 }
 }));
 
@@ -97,24 +106,24 @@ export default function NavTabs() {
             indicator: classes.customTabIndicator
         }}
         >
-          <LinkTab label="Payments"  href="/drafts" {...a11yProps(0)} />
-          <LinkTab label="Students" href="/trash" {...a11yProps(1)} />
-          <LinkTab label="Products" href="/spam" {...a11yProps(2)} />
-          <LinkTab label="Marketing" href="/marketing" {...a11yProps(3)} />
+          <LinkTab className={classes.tabs} label="Payments"  href="/drafts" {...a11yProps(0)} />
+          <LinkTab className={classes.tabs}  label="Customers" href="/trash" {...a11yProps(1)} />
+          <LinkTab className={classes.tabs} label="Products" href="/spam" {...a11yProps(2)} />
+          <LinkTab className={classes.tabs} label="Marketing" href="/marketing" {...a11yProps(3)} />
 
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Payments
+      <TabPanel  value={value} index={0}>
+       <Payments/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Students
+        <Customers/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Products
+        <Products/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Marketing
+        <Marketing/>
       </TabPanel>
     </div>
   );
